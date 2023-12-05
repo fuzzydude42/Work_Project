@@ -17,9 +17,11 @@ pushd /tmp/$ranNum/
 cat $file | tr -d '\r%<>' > tr1  #removes \r(return), %, <, >, from file
 sed 's/^OO/O/' tr1 > allprog #if line starts OO replace with O
 awk NF allprog >> 2allprog #remove blank lines
+awk '/^O/' 2allprog > _ATableOfContents.txt #create a table of contents file
 awk '/^$/ {next} BEGIN {FIELDWIDTHS="5"} /^O/ {fn=$1 ".NC";print "%">fn}{print>fn}' 2allprog #create program files from source
 for i in *.NC ; do echo "%" >> $i ; done
 popd
 mkdir $folder$ranNum
 cp /tmp/$ranNum/*.NC ./$folder$ranNum/
+cp /tmp/$ranNum/_ATableOfContents.txt ./$folder$ranNum/   #copy it back to source folder
 }
