@@ -1,5 +1,6 @@
 Simple bash script to split backup files from CNC machines with Fanuc controller, possibly other controllers.
-On Fanuc controllers, at least the ones I have access to, backing up all the programs creates a single large file, not seperate program files. This simple script breaks the backup file into program files using the configuration of a program starting O1234, a capital letter O followed by 4 digits and ending at the beginning of the next program matching the starting condition.
+On Fanuc controllers, at least the ones I have access to, backing up all the programs creates a single large file, not seperate program files. 
+This simple script breaks the backup file into program files using the configuration of a program starting O1234, a capital letter O followed by 4 digits and ending at the beginning of the next program matching the starting condition.
 I used this bash script successfully within Windows WSL under Ubuntu 24.04.1 LTS and previous versions, and tested to work with a RasPi so should work on other Linux systems as well.
 There are a couple prerequisites to using this script as intended:
   -GNU Awk needs to be present, under Ubuntu "sudo apt install gawk" to install as its not present by default
